@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:videofy/widgets/CustomButton.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -8,6 +9,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final AuthMethods _authMethods=AuthMethods();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +23,14 @@ class _LoginScreenState extends State<LoginScreen> {
             'Join a Meet',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
-          Image.asset(''),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 38.0),
+            child: Image.asset('assets/images/onboarding.jpg'),
+          ),
+          CustomButton(text: 'Login',onPressed: ()async{
+            bool res=await _authMethods.signInWithGoogle(context);
+            if(res){
+          },),
         ],
       ),
     );
