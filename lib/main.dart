@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:videofy/Screen/LoginScreen.dart';
+import 'package:videofy/Screen/VideoCallScreen.dart';
 import 'package:videofy/resources/auth.dart';
 import 'package:videofy/utils/colors.dart';
 
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/login':(context)=>const LoginScreen(),
         '/home':(context)=>const HomeScreen(),
+        '/videocall':(context)=> VideoCallScreen(),
       },
       home: StreamBuilder(
         stream:Auth().authChanges,

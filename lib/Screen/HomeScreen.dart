@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:videofy/Screen/MeetingScreen.dart';
 import 'package:videofy/utils/colors.dart';
 import 'package:videofy/widgets/HomeMeetingButton.dart';
 
@@ -16,7 +17,12 @@ class _HomeScreenState extends State<HomeScreen> {
       _page = page;
     });
   }
-
+  List<Widget> pages=[
+    MeetingScreen(),
+    HistoryMeeting(),
+    const Text('contacts'),
+    const Text('settings'),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,43 +50,18 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: Icon(Icons.settings_outlined), label: 'Settings'),
         ],
       ),
-      body: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              HomeMeetingButton(
-                icon: Icons.videocam,
-                onPressed: () {},
-                text: 'New Meeting',
-              ),
-              HomeMeetingButton(
-                icon: Icons.add_box_rounded,
-                onPressed: () {},
-                text: 'Join Meeting',
-              ),
-              HomeMeetingButton(
-                icon: Icons.calendar_today,
-                onPressed: () {},
-                text: 'Schedule Meet',
-              ),
-              HomeMeetingButton(
-                icon: Icons.arrow_upward,
-                onPressed: () {},
-                text: 'Share Screen',
-              ),
-            ],
-          ),
-          const Expanded(
-            child: Center(
-              child: Text(
-                'Create Or Join Meeting',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-              ),
-            ),
-          ),
-        ],
-      ),
+      body: pages[_page],
     );
+  }
+}
+
+class HistoryMeeting extends StatelessWidget {
+  const HistoryMeeting({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Center();
   }
 }
