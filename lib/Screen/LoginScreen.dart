@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:videofy/widgets/CustomButton.dart';
+import 'package:videofy/resources/auth.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -9,12 +10,12 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final AuthMethods _authMethods=AuthMethods();
+  final Auth _authMethods=Auth();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sankalp'),
+        title: Text('VideoFy'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -30,6 +31,8 @@ class _LoginScreenState extends State<LoginScreen> {
           CustomButton(text: 'Login',onPressed: ()async{
             bool res=await _authMethods.signInWithGoogle(context);
             if(res){
+              Navigator.pushNamed(context, '/home');
+            }
           },),
         ],
       ),

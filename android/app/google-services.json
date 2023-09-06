@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "691948599993",
+    "project_id": "videofy-69006",
+    "storage_bucket": "videofy-69006.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:691948599993:android:f9feed8bc6d7110364b968",
+        "android_client_info": {
+          "package_name": "com.example.videofy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "691948599993-jvmujbobcsujj41eq1uqrhi4mi2nnkb3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.videofy",
+            "certificate_hash": "aad9eca9821b1d9260fa6a0b6d76b4756861e342"
+          }
+        },
+        {
+          "client_id": "691948599993-grtvrcq9skkjjkfvpnkq8rckh7eollt9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMe4Wolnhx90KCvcDpLratAEnm7dtGCdk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "691948599993-grtvrcq9skkjjkfvpnkq8rckh7eollt9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
