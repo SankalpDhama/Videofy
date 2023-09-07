@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:videofy/resources/auth.dart';
 import 'package:videofy/utils/colors.dart';
+import 'package:videofy/widgets/MeetingOption.dart';
 
 class VideoCallScreen extends StatefulWidget {
   const VideoCallScreen({super.key});
@@ -9,6 +11,19 @@ class VideoCallScreen extends StatefulWidget {
 }
 
 class _VideoCallScreenState extends State<VideoCallScreen> {
+  final Auth _auth = Auth();
+  late TextEditingController meetingController;
+  late TextEditingController nameController;
+  void initState() {
+    setState(() {
+      meetingController = TextEditingController();
+      nameController = TextEditingController(text: _auth.user.displayName);
+      super.initState();
+    });
+  }
+  bool isAudioMuted=true;
+  bool isVideoMuted=true;
+  joinMeeting() {}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,6 +36,66 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
         ),
         centerTitle: true,
       ),
+      body: Column(
+        children: [
+          SizedBox(
+            height: 60,
+            child: TextField(
+              controller: meetingController,
+              maxLines: 1,
+              textAlign: TextAlign.center,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                fillColor: secondaryBackgroundColor,
+                filled: true,
+                border: InputBorder.none,
+                hintText: 'Room Id',
+                contentPadding: EdgeInsets.fromLTRB(16, 8, 0, 0),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 60,
+            child: TextField(
+              controller: nameController,
+              maxLines: 1,
+              textAlign: TextAlign.center,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                fillColor: secondaryBackgroundColor,
+                filled: true,
+                border: InputBorder.none,
+                hintText: 'Name',
+                contentPadding: EdgeInsets.fromLTRB(16, 8, 0, 0),
+              ),
+            ),
+          ),
+          const SizedBox(),
+          InkWell(
+            onTap: joinMeeting,
+            child: Padding(
+              padding: EdgeInsets.all(8),
+              child: Text(
+                'Join A Meeting',
+                style: TextStyle(fontSize: 16),
+              ),
+            ),
+          ),
+          const SizedBox(),
+          MeetingOption(text: 'Mute Audio', isMute: isAudioMuted, onChange: onAudioMuted),
+          MeetingOption(text: 'Turn Of Video', isMute: isVideoMuted, onChange: onVideoMuted)
+        ],
+      ),
     );
+  }
+  onVideoMuted(bool val){
+    setState(() {
+      isVideoMuted=val;
+    });
+  }
+  onAudioMuted(bool val){
+    setState(() {
+      isAudioMuted=val;
+    });
   }
 }
