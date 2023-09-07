@@ -1,6 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:videofy/Screen/HistoryMeetingScreen.dart';
 import 'package:videofy/Screen/MeetingScreen.dart';
+import 'package:videofy/resources/auth.dart';
+import 'package:videofy/resources/firestore.dart';
 import 'package:videofy/utils/colors.dart';
+import 'package:videofy/widgets/CustomButton.dart';
 import 'package:videofy/widgets/HomeMeetingButton.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,9 +24,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
   List<Widget> pages=[
     MeetingScreen(),
-    HistoryMeeting(),
-    const Text('contacts'),
-    const Text('settings'),
+    HistoryMeetinScreen(),
+    CustomButton(text: 'Log Out', onPressed: ()=>Auth().signOut()),
   ];
   @override
   Widget build(BuildContext context) {
@@ -45,23 +49,10 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
               icon: Icon(Icons.lock_clock), label: 'Meetings'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person_outline), label: 'Contact'),
-          BottomNavigationBarItem(
               icon: Icon(Icons.settings_outlined), label: 'Settings'),
         ],
       ),
       body: pages[_page],
     );
-  }
-}
-
-class HistoryMeeting extends StatelessWidget {
-  const HistoryMeeting({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Center();
   }
 }

@@ -12,7 +12,7 @@ class MeetingScreen extends StatelessWidget {
   createNewMeeting() async{
     var random=Random();
     String name=(random.nextInt(100000000)+1000000).toString();
-    _jitsiMeetMethods.createMeeting(name, true, true);
+    _jitsiMeetMethods.createMeeting(roomName: name, isAudio: true, isVideo: true);
   }
   joinNewMeeting(BuildContext context) async{
     Navigator.pushNamed(context, '/videocall');

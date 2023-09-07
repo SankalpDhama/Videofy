@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:jitsi_meet_wrapper/jitsi_meet_wrapper.dart';
+import 'package:videofy/resources/JitsiMeet.dart';
 import 'package:videofy/resources/auth.dart';
 import 'package:videofy/utils/colors.dart';
 import 'package:videofy/widgets/MeetingOption.dart';
@@ -12,6 +14,7 @@ class VideoCallScreen extends StatefulWidget {
 
 class _VideoCallScreenState extends State<VideoCallScreen> {
   final Auth _auth = Auth();
+  final JitsiMeetMethods _jitsiMeetMethods=JitsiMeetMethods();
   late TextEditingController meetingController;
   late TextEditingController nameController;
   void initState() {
@@ -21,9 +24,16 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
       super.initState();
     });
   }
+  void dispose(){
+    super.dispose();
+    meetingController.dispose();
+    nameController.dispose();
+  }
   bool isAudioMuted=true;
   bool isVideoMuted=true;
-  joinMeeting() {}
+  joinMeeting() {
+    _jitsiMeetMethods.createMeeting( roomName: meetingController.text, isAudio: isAudioMuted, isVideo: isVideoMuted,username: nameController.text);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

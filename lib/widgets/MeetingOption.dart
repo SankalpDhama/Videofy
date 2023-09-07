@@ -12,15 +12,18 @@ class MeetingOption extends StatelessWidget {
     return Container(
       height: 60,
       color: secondaryBackgroundColor,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            text,
-            style: TextStyle(fontSize: 16),
-          ),
-          Switch.adaptive(value: isMute, onChanged: onChange),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              text,
+              style: TextStyle(fontSize: 16),
+            ),
+            Switch.adaptive(value: isMute, onChanged: onChange),
+          ],
+        ),
       ),
     );
   }
